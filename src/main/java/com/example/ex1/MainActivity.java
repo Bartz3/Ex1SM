@@ -34,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
         nextButton=findViewById(R.id.next_button);
         questionTextView=findViewById(R.id.question_text_view);
 
+        setNextQuestion();
+
         trueButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -51,10 +53,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 currentIndex=(currentIndex+1)%questions.length;
+                setNextQuestion();
             }
-        });
-    }
 
+        });
+
+
+    }
     private void setNextQuestion(){
         questionTextView.setText(questions[currentIndex].getQuestionId());
     }
@@ -69,5 +74,6 @@ public class MainActivity extends AppCompatActivity {
         }
         Toast.makeText(this, resultMessageId, Toast.LENGTH_SHORT).show();
     }
+
 
 }
